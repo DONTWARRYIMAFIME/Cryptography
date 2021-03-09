@@ -1,7 +1,7 @@
 package Cryptograhy.Methods;
 
 public interface CryptographyMethod {
-    String encrypt(int key, String sourceStr);
-    String decrypt();
+    String encrypt(String sourceStr, String key);
+    String decrypt(String sourceStr, String key);
 
 }

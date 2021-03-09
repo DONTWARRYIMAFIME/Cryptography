@@ -2,17 +2,21 @@ package Cryptograhy.Methods;
 
 import Cryptograhy.Methods.CryptographyMethod;
 
-public class Railway implements CryptographyMethod {
+public class RailFence implements CryptographyMethod {
+
+    private Character[][] mat;
 
     @Override
-    public String encrypt(int key, String sourceStr) {
-        Character[][] mat = new Character[key][sourceStr.length()];
+    public String encrypt(String sourceStr, String key) {
+        int keyLen = key.length();
 
-        int period = 2 * (key - 1);
+        mat = new Character[keyLen][sourceStr.length()];
+
+        int period = 2 * (keyLen - 1);
 
         for (int i = 0; i < sourceStr.length(); i++) {
             int ost = i % period;
-            int row = key - 1 - Math.abs(key - 1 - ost);
+            int row = keyLen - 1 - Math.abs(keyLen - 1 - ost);
             mat[row][i] = sourceStr.charAt(i);
         }
 
@@ -22,7 +26,7 @@ public class Railway implements CryptographyMethod {
     }
 
     @Override
-    public String decrypt() {
+    public String decrypt(String sourceStr, String key) {
         return "none";
     }
 
@@ -39,9 +43,9 @@ public class Railway implements CryptographyMethod {
     }
 
     private void printMatrix(Character[][] mat) {
-        for (Character rows[] : mat) {
-            for (int j = 0; j < rows.length; j++) {
-                System.out.print(rows[j] != null ? rows[j]  + " " : " ");
+        for (int i = 0; i < mat.length; i++) {
+            for (int j = 0; j < mat[i].length; j++) {
+                System.out.print(mat[i][j] != null ? mat[i][j]  + " " : "  ");
             }
             System.out.println();
         }

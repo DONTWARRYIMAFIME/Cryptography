@@ -1,11 +1,12 @@
 package Cryptograhy.Factory;
 
+import Cryptograhy.Methods.Columnar;
 import Cryptograhy.Methods.CryptographyMethod;
-import Cryptograhy.Methods.Railway;
 
-public class RailwayFactory implements CryptographyFactory {
+public class ColumnarFactory implements CryptographyFactory {
+
     @Override
     public CryptographyMethod create() {
-        return new Railway();
+        return new Columnar();
     }
 }
