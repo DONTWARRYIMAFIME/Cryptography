@@ -1,9 +1,9 @@
-package Cryptograhy;
+package Cryptography;
 
-import Cryptograhy.Factory.ColumnarFactory;
-import Cryptograhy.Factory.CryptographyFactory;
-import Cryptograhy.Factory.RailFenceFactory;
-import Cryptograhy.Methods.CryptographyMethod;
+import Cryptography.Factory.ColumnarFactory;
+import Cryptography.Factory.CryptographyFactory;
+import Cryptography.Factory.RailFenceFactory;
+import Cryptography.Methods.CryptographyMethod;
 
 import java.util.Locale;
 import java.util.Scanner;

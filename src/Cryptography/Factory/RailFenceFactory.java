@@ -1,7 +1,7 @@
-package Cryptograhy.Factory;
+package Cryptography.Factory;
 
-import Cryptograhy.Methods.CryptographyMethod;
-import Cryptograhy.Methods.RailFence;
+import Cryptography.Methods.CryptographyMethod;
+import Cryptography.Methods.RailFence;
 
 public class RailFenceFactory implements CryptographyFactory {
     @Override

@@ -1,4 +1,4 @@
-package Cryptograhy.Methods;
+package Cryptography.Methods;
 
 public interface CryptographyMethod {
     String encrypt(String sourceStr, String key);

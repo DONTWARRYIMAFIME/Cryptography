@@ -1,7 +1,7 @@
-package Cryptograhy.Factory;
+package Cryptography.Factory;
 
-import Cryptograhy.Methods.Columnar;
-import Cryptograhy.Methods.CryptographyMethod;
+import Cryptography.Methods.Columnar;
+import Cryptography.Methods.CryptographyMethod;
 
 public class ColumnarFactory implements CryptographyFactory {
 

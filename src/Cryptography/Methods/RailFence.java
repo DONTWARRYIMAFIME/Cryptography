@@ -1,6 +1,4 @@
-package Cryptograhy.Methods;
-
-import Cryptograhy.Methods.CryptographyMethod;
+package Cryptography.Methods;
 
 public class RailFence implements CryptographyMethod {
 

@@ -1,4 +1,4 @@
-package Cryptograhy.Methods;
+package Cryptography.Methods;
 
 import java.util.Arrays;
 import java.util.Objects;
