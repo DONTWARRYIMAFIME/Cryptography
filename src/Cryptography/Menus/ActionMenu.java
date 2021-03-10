@@ -23,7 +23,7 @@ public class ActionMenu extends Menu {
         switch (navigation) {
             case "1" -> {
                 System.out.println("Input source string: ");
-                sourceStr = scanner.nextLine().replaceAll("\\s+", "").toUpperCase(Locale.ROOT);
+                sourceStr = scanner.nextLine();
                 System.out.println("Input key: ");
                 key = scanner.nextLine();
                 System.out.println(cryptographyMethod.encrypt(sourceStr, key));
