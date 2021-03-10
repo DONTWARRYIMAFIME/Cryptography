@@ -2,7 +2,7 @@ package Cryptography;
 
 public class Main {
     public static void main(String[] args) {
-        App app = new App();
+        new App().launch();
     }
 }
 
