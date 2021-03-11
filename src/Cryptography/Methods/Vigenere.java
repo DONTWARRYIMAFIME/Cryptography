@@ -66,23 +66,27 @@ public class Vigenere implements CryptographyMethod {
         }
 
         StringBuilder sKey = new StringBuilder(key);
-//        int iterator = 0;
-//        int loop = keyLen;
-//
-//        while (sKey.length() < strLen) {
-//            int nextSymbol = key.charAt(iterator) + loop / keyLen;
-//            nextSymbol = nextSymbol % (lastChar - 2) + firstChar;
-//            sKey.append((char)(nextSymbol));
-//            iterator = ++iterator % keyLen;
-//            loop++;
-//        }
 
+        //Progressive key
         int iterator = 0;
+        int loop = keyLen;
+
 
         while (sKey.length() < strLen) {
-            sKey.append(key.charAt(iterator));
+            int nextSymbol = key.charAt(iterator) + loop / keyLen - firstChar;
+            nextSymbol = firstChar + ((nextSymbol) % (aLen - 1));
+            sKey.append((char)(nextSymbol));
             iterator = ++iterator % keyLen;
+            loop++;
         }
+
+        //Basic key
+//      int iterator = 0;
+//
+//      while (sKey.length() < strLen) {
+//          sKey.append(key.charAt(iterator));
+//          iterator = ++iterator % keyLen;
+//      }
 
         return  sKey.toString();
     }
