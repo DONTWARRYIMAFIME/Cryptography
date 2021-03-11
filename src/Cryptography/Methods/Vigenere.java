@@ -127,6 +127,7 @@ public class Vigenere implements CryptographyMethod {
         }
 
         return str.toString();
+
     }
 
 }
