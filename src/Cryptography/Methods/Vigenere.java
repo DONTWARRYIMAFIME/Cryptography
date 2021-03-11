@@ -17,7 +17,7 @@ public class Vigenere implements CryptographyMethod {
         Character[][] mat = generateMatrix();
         printMatrix(mat);
         String sKey = supplementKey(sourceStr, key);
-        return makeEncryption(sourceStr.toUpperCase(Locale.ROOT), sKey.toUpperCase(Locale.ROOT), mat);
+        return makeEncryption(sourceStr, sKey, mat);
     }
 
     @Override
@@ -25,7 +25,7 @@ public class Vigenere implements CryptographyMethod {
         Character[][] mat = generateMatrix();
         printMatrix(mat);
         String sKey = supplementKey(sourceStr, key);
-        return makeDecryption(sourceStr.toUpperCase(Locale.ROOT), sKey.toUpperCase(Locale.ROOT), mat);
+        return makeDecryption(sourceStr, sKey, mat);
     }
 
     private Character[][] generateMatrix() {
@@ -80,13 +80,13 @@ public class Vigenere implements CryptographyMethod {
             loop++;
         }
 
-        //Basic key
-//      int iterator = 0;
+//        //Basic key
+//        int iterator = 0;
 //
-//      while (sKey.length() < strLen) {
-//          sKey.append(key.charAt(iterator));
-//          iterator = ++iterator % keyLen;
-//      }
+//        while (sKey.length() < strLen) {
+//            sKey.append(key.charAt(iterator));
+//            iterator = ++iterator % keyLen;
+//        }
 
         return  sKey.toString();
     }
@@ -121,7 +121,7 @@ public class Vigenere implements CryptographyMethod {
             int col = RegularMath.linearSearch(mat[row], sourceStr.charAt(i));
 
             try {
-                str.append(mat[row][col]);
+                str.append(mat[1][col]);
             } catch (IndexOutOfBoundsException e) {
                 System.out.format(
                         "Localization problem. Symbol '%c' out of alphabet\n",

@@ -8,7 +8,8 @@ public class RegularMath {
         int size = arr.length;
         for(int i = 0; i < size; i++)
         {
-            if (Objects.equals(arr[i], key)) return i;
+            if (Objects.equals(arr[i], key))
+                return i;
         }
 
         return -1;
