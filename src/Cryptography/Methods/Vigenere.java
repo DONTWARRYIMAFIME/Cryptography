@@ -2,8 +2,6 @@ package Cryptography.Methods;
 
 import Cryptography.RegularMath;
 
-import java.util.Locale;
-
 public class Vigenere implements CryptographyMethod {
 
     //Change this, if you gonna use another alphabet
