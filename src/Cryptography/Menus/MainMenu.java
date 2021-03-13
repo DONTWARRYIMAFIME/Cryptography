@@ -1,9 +1,6 @@
 package Cryptography.Menus;
 
-import Cryptography.Factory.ColumnarFactory;
-import Cryptography.Factory.CryptographyFactory;
-import Cryptography.Factory.RailFenceFactory;
-import Cryptography.Factory.VigenereFactory;
+import Cryptography.Factory.*;
 
 import java.util.Deque;
 
@@ -22,7 +19,7 @@ public class MainMenu extends Menu {
         switch (navigation) {
             case "1" -> cryptographyFactory = new RailFenceFactory();
             case "2" -> cryptographyFactory = new ColumnarFactory();
-            case "3" -> cryptographyFactory = new RailFenceFactory();
+            case "3" -> cryptographyFactory = new RotatingLatticeFactory();
             case "4" -> cryptographyFactory = new VigenereFactory();
             case "0" -> exit = true;
             default -> System.out.println("Unknown command, try again");
@@ -37,7 +34,7 @@ public class MainMenu extends Menu {
     public void printNavigation() {
         System.out.println("1) Rail fence");
         System.out.println("2) Columnar");
-        System.out.println("3) Rail fence");
+        System.out.println("3) Rotating lattice");
         System.out.println("4) Vigenere");
         System.out.println("0) Exit");
     }

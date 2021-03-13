@@ -14,4 +14,5 @@ public class RegularMath {
 
         return -1;
     }
+
 }

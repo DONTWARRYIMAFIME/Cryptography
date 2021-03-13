@@ -4,33 +4,33 @@ public class RailFence implements CryptographyMethod {
 
     @Override
     public String encrypt(String sourceStr, String key) {
-        Character[][] mat = generateEncryptionMatrix(sourceStr, key);
+        char[][] mat = generateEncryptionMatrix(sourceStr, key);
         printMatrix(mat);
         return convertEncryptionMatrix(mat);
     }
 
     @Override
     public String decrypt(String sourceStr, String key) {
-        Character[][] mat = generateDecryptionMatrix(sourceStr, key);
+        char[][] mat = generateDecryptionMatrix(sourceStr, key);
         printMatrix(mat);
         return convertDecryptionMatrix(mat);
     }
 
-    private void printMatrix(Character[][] mat) {
-        for (int i = 0; i < mat.length; i++) {
-            for (int j = 0; j < mat[i].length; j++) {
-                System.out.print(mat[i][j] != null ? mat[i][j] + " " : "  ");
+    private void printMatrix(char[][] mat) {
+        for (char[] chars : mat) {
+            for (char aChar : chars) {
+                System.out.print(aChar != '\u0000' ? aChar + " " : "  ");
             }
             System.out.println();
         }
     }
 
     //Encryption
-    private Character[][] generateEncryptionMatrix(String sourceStr, String key) {
+    private char[][] generateEncryptionMatrix(String sourceStr, String key) {
         int rows = key.length();
         int cols = sourceStr.length();
 
-        Character[][] mat = new Character[rows][cols];
+        char[][] mat = new char[rows][cols];
 
         int period = 2 * (rows - 1);
 
@@ -43,12 +43,12 @@ public class RailFence implements CryptographyMethod {
         return mat;
     }
 
-    private String convertEncryptionMatrix(Character[][] mat) {
+    private String convertEncryptionMatrix(char[][] mat) {
         StringBuilder result = new StringBuilder();
 
-        for (Character[] rows : mat) {
-            for (Character col : rows) {
-                if (col != null) {
+        for (char[] rows : mat) {
+            for (char col : rows) {
+                if (col != ' ') {
                     result.append(col);
                 }
             }
@@ -57,11 +57,11 @@ public class RailFence implements CryptographyMethod {
     }
 
     //Decryption
-    private Character[][] generateDecryptionMatrix(String sourceStr, String key) {
+    private char[][] generateDecryptionMatrix(String sourceStr, String key) {
         int rows = key.length();
         int cols = sourceStr.length();
 
-        Character[][] mat = new Character[rows][cols];
+        char[][] mat = new char[rows][cols];
 
         int period = 2 * (rows - 1);
         int position = 0;
@@ -81,7 +81,7 @@ public class RailFence implements CryptographyMethod {
     }
 
 
-    private String convertDecryptionMatrix(Character[][] mat) {
+    private String convertDecryptionMatrix(char[][] mat) {
         StringBuilder result = new StringBuilder();
 
         int rows = mat.length;
@@ -95,6 +95,5 @@ public class RailFence implements CryptographyMethod {
 
         return result.toString();
     }
-
 
 }

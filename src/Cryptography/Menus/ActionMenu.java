@@ -25,14 +25,14 @@ public class ActionMenu extends Menu {
                 System.out.println("Input source string: ");
                 sourceStr = scanner.nextLine().replaceAll("\\s+", "").toUpperCase(Locale.ROOT);
                 System.out.println("Input key: ");
-                key = scanner.nextLine();
+                key = scanner.nextLine().replaceAll("\\s+", "").toUpperCase(Locale.ROOT);
                 System.out.println(cryptographyMethod.encrypt(sourceStr, key));
             }
             case "2" -> {
                 System.out.println("Input encrypted string: ");
-                sourceStr = scanner.nextLine();
+                sourceStr = scanner.nextLine().replaceAll("\\s+", "").toUpperCase(Locale.ROOT);
                 System.out.println("Input key: ");
-                key = scanner.nextLine();
+                key = scanner.nextLine().replaceAll("\\s+", "").toUpperCase(Locale.ROOT);
                 System.out.println(cryptographyMethod.decrypt(sourceStr, key));
             }
             case "0" -> exit = true;

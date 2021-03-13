@@ -1,6 +1,6 @@
 package Cryptography.Methods;
 
-import Cryptography.RegularMath;
+import java.util.Arrays;
 
 public class Vigenere implements CryptographyMethod {
 
@@ -12,7 +12,7 @@ public class Vigenere implements CryptographyMethod {
 
     @Override
     public String encrypt(String sourceStr, String key) {
-        Character[][] mat = generateMatrix();
+        char[][] mat = generateMatrix();
         printMatrix(mat);
         String sKey = supplementKey(sourceStr, key);
         return makeEncryption(sourceStr, sKey, mat);
@@ -20,15 +20,15 @@ public class Vigenere implements CryptographyMethod {
 
     @Override
     public String decrypt(String sourceStr, String key) {
-        Character[][] mat = generateMatrix();
+        char[][] mat = generateMatrix();
         printMatrix(mat);
         String sKey = supplementKey(sourceStr, key);
         return makeDecryption(sourceStr, sKey, mat);
     }
 
-    private Character[][] generateMatrix() {
+    private char[][] generateMatrix() {
 
-        Character[][] mat = new Character[aLen][aLen];
+        char[][] mat = new char[aLen][aLen];
 
         for (int i = 0; i < aLen - 1; i++) {
             char symbol = (char)(firstChar + i);
@@ -46,10 +46,10 @@ public class Vigenere implements CryptographyMethod {
         return mat;
     }
 
-    private void printMatrix(Character[][] mat) {
-        for (Character col[] : mat) {
-            for (Character symbol : col) {
-                System.out.print(symbol != null ? symbol + " " : "  ");
+    private void printMatrix(char[][] mat) {
+        for (char[] col : mat) {
+            for (char symbol : col) {
+                System.out.print(symbol + " ");
             }
             System.out.println();
         }
@@ -90,20 +90,18 @@ public class Vigenere implements CryptographyMethod {
     }
 
     //Encryption
-    private String makeEncryption(String sourceStr, String key, Character[][] mat) {
+    private String makeEncryption(String sourceStr, String key, char[][] mat) {
 
         StringBuilder str = new StringBuilder();
         for (int i = 0; i < sourceStr.length(); i++) {
-            int row = RegularMath.linearSearch(mat[0], key.charAt(i));
-            int col = RegularMath.linearSearch(mat[0], sourceStr.charAt(i));
+            int col = Arrays.binarySearch(mat[0], key.charAt(i));
+            int row = Arrays.binarySearch(mat[0], sourceStr.charAt(i));
 
             try {
-                str.append(mat[row][col]);
+                str.append(mat[col][row]);
             } catch (IndexOutOfBoundsException e) {
-                System.out.format(
-                        "Localization problem. Symbol '%c' out of alphabet\n",
-                        row < 0 ? key.charAt(i) : sourceStr.charAt(i)
-                );
+                char errorChar = col < row ? key.charAt(i) : sourceStr.charAt(i);
+                System.out.format("Localization problem. Symbol '%c' out of alphabet\n", errorChar);
             }
         }
 
@@ -111,20 +109,18 @@ public class Vigenere implements CryptographyMethod {
     }
 
     //Decryption
-    private String makeDecryption(String sourceStr, String key, Character[][] mat) {
+    private String makeDecryption(String sourceStr, String key, char[][] mat) {
 
         StringBuilder str = new StringBuilder();
         for (int i = 0; i < sourceStr.length(); i++) {
-            int row = RegularMath.linearSearch(mat[0], key.charAt(i));
-            int col = RegularMath.linearSearch(mat[row], sourceStr.charAt(i));
+            int col = Arrays.binarySearch(mat[1], key.charAt(i));
+            int row = new String(mat[col]).indexOf(sourceStr.charAt(i));
 
             try {
-                str.append(mat[1][col]);
+                str.append(mat[row][0]);
             } catch (IndexOutOfBoundsException e) {
-                System.out.format(
-                        "Localization problem. Symbol '%c' out of alphabet\n",
-                        row < 0 ? key.charAt(i) : sourceStr.charAt(i)
-                );
+                char errorChar = col < row ? key.charAt(i) : sourceStr.charAt(i);
+                System.out.format("Localization problem. Symbol '%c' out of alphabet\n", errorChar);
             }
         }
 
